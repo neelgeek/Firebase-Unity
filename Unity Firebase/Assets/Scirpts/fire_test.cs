@@ -11,7 +11,7 @@ public class fire_test : MonoBehaviour {
     DatabaseReference reference;
 	// Use this for initialization
 	void Start () {
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://unity-firebase-5a873.firebaseio.com/");
+        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("<your firebase database link>");
         reference = FirebaseDatabase.DefaultInstance.RootReference;
         
     }
@@ -37,18 +37,10 @@ public class fire_test : MonoBehaviour {
                     Debug.Log(item.Key); // Kdq6...
                     var values = JsonUtility.FromJson<User>(item.Value.ToString());
                     Debug.Log(values.name + " " + values.n);
-
-                    //foreach (var v in values)
-                    //{
-                    //    Debug.Log(v.Key + ":" + v.Value); // category:livingroom, code:126 ...
-                    //}
                 }
             }
 
             );
-
-      //  var newval = FirebaseDatabase.DefaultInstance.GetReference("Users").OrderByChild("name").EqualTo("Neel");
-      
     }
 }
 
