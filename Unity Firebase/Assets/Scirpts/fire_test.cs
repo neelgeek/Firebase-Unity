@@ -16,17 +16,18 @@ public class fire_test : MonoBehaviour {
         
     }
 	
+	//Taking Input on button click
 	public void AddData(InputField name)
     {
-        User newuser = new User(name.text.ToString());
-        string json = JsonUtility.ToJson(newuser);
-        reference.Child("Users").Push().SetValueAsync(json);
+        User newuser = new User(name.text.ToString()); //Initializing Class User
+        string json = JsonUtility.ToJson(newuser); //converting User classs to Json
+        reference.Child("Users").Push().SetValueAsync(json); //Pushing to Database
     }
         
 
     public void RefreshData()
     {
-        
+        //gettting all the children with name field equal to "neel"
         FirebaseDatabase.DefaultInstance.GetReference("Users").OrderByChild("name").EqualTo("neel").GetValueAsync().ContinueWith(
             task =>
             {
@@ -49,7 +50,7 @@ public class fire_test : MonoBehaviour {
 
 
 
-
+//Class User, it will be used as a data container
 public class User
 {
     public string name;
